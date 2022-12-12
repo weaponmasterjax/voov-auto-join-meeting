@@ -44,12 +44,12 @@ def signIn(meeting_id):
     time.sleep(1)
 
 while True:
-    now = datetime.now().strftime("%H:%M")
-    debugging=True
-    if now=="9:47" or debugging==True:
-        meeting_id = '666666666'#Your meeting number goes here
+    now = datetime.now().strftime("%H:%M")#dont forget to add 0 before A.M. time!
+    debugging=False
+    if now=="07:17" or debugging==True:#here goes your time!
+        meeting_id = '12345678876'#Your meeting number goes here!
         time.sleep(5)
         signIn(meeting_id)
-        print('Signed in!')
+        print('Joined.')
         break
     
