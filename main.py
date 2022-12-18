@@ -5,8 +5,8 @@ import time
 from datetime import datetime
 import cv2
 def ScreenshotAndCV(tempFile, whatDo, debug=True):
-    pyautogui.screenshot('big.png')
-    gray = cv2.imread("big.png",0)
+    pyautogui.screenshot('./resource/big.png')
+    gray = cv2.imread("./resource/big.png",0)
     img_template = cv2.imread(tempFile,0)
     w, h = img_template.shape[::-1]
     res = cv2.matchTemplate(gray,img_template,cv2.TM_SQDIFF)
@@ -20,13 +20,13 @@ def ScreenshotAndCV(tempFile, whatDo, debug=True):
     whatDo(x)
 
     if debug:
-        img = cv2.imread("big.png",1)
+        img = cv2.imread("./resource/big.png",1)
         cv2.rectangle(img,top_left, bottom_right, (0,0,255), 2)
         img = cv2.resize(img, (0, 0), fx=0.5, fy=0.5, interpolation=cv2.INTER_NEAREST)
         cv2.imshow("processed",img)
         cv2.waitKey(0)
         cv2.destroyAllWindows()
-    os.remove("big.png")
+    os.remove("./resource/big.png")
     
 def signIn(meeting_id):
     '''
@@ -35,16 +35,16 @@ def signIn(meeting_id):
     # Start voov
     os.startfile("C:\Program Files (x86)\Tencent\WeMeet\wemeetapp.exe")
     time.sleep(10)# wait for start
-    ScreenshotAndCV("joinbtn.png", pyautogui.click, False)
+    ScreenshotAndCV("./resource/joinbtn.png", pyautogui.click, False)
     time.sleep(1)# get a screenshot to find buttons
-    ScreenshotAndCV("meeting_id.png", pyautogui.click, False)
+    ScreenshotAndCV("./resource/meeting_id.png", pyautogui.click, False)
     pyautogui.write(meeting_id)
-    ScreenshotAndCV("final.png", pyautogui.click, False)
+    ScreenshotAndCV("./resource/final.png", pyautogui.click, False)
     if password_exsist==True:
-        ScreenshotAndCV("passwordbox.png", pyautogui.click, False)
+        ScreenshotAndCV("./resource/passwordbox.png", pyautogui.click, False)
         time.sleep(5)
         pyautogui.write(password)
-        ScreenshotAndCV("confirmpass.png", pyautogui.click, False)
+        ScreenshotAndCV("./resource/confirmpass.png", pyautogui.click, False)
     time.sleep(2)
 
 
