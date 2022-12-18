@@ -34,22 +34,29 @@ def signIn(meeting_id):
     '''
     # Start voov
     os.startfile("C:\Program Files (x86)\Tencent\WeMeet\wemeetapp.exe")
-    time.sleep(7)# wait for start
+    time.sleep(10)# wait for start
     ScreenshotAndCV("joinbtn.png", pyautogui.click, False)
     time.sleep(1)# get a screenshot to find buttons
     ScreenshotAndCV("meeting_id.png", pyautogui.click, False)
     pyautogui.write(meeting_id)
-    time.sleep(2)
     ScreenshotAndCV("final.png", pyautogui.click, False)
-    time.sleep(1)
+    if password_exsist==True:
+        ScreenshotAndCV("passwordbox.png", pyautogui.click, False)
+        time.sleep(5)
+        pyautogui.write(password)
+        ScreenshotAndCV("confirmpass.png", pyautogui.click, False)
+    time.sleep(2)
+
 
 while True:
     now = datetime.now().strftime("%H:%M")#dont forget to add 0 before A.M. time!
-    debugging=False
-    if now=="10:38" or debugging==True:#here goes your time!
-        meeting_id = '6329288939'#Your meeting number goes here!
+    password_exsist=True
+    debugging=True
+    password='334455'
+    if now=="13:40" or debugging==True:#here goes your time!
+        meeting_id = '703961705'#Your meeting number goes here!
         time.sleep(5)
         signIn(meeting_id)
         print('Joined.')
         break
-    
+    time.sleep(40)
