@@ -51,10 +51,10 @@ def signIn(meeting_id):
 while True:
     now = datetime.now().strftime("%H:%M")#dont forget to add 0 before A.M. time!
     password_exsist=True
-    debugging=False
-    password='334455'
+    debugging=True
+    password='666666'#meeting room password goes here
     if now=="13:40" or debugging==True:#here goes your time!
-        meeting_id = '703961705'#Your meeting number goes here!
+        meeting_id = '12345678'#Your meeting number goes here!
         time.sleep(5)
         signIn(meeting_id)
         print('Joined.')
