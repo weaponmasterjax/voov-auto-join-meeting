@@ -4,9 +4,11 @@ import pyautogui
 import time
 from datetime import datetime
 import cv2
+import platform
 '''
 V1.0
 '''
+
 
 def ScreenshotAndCV(tempFile, whatDo, debug=True):
     pyautogui.screenshot('./resource/big.png')
@@ -54,14 +56,26 @@ def signIn(meeting_id):
     time.sleep(2)
 
 
+'''
+Check whether wemeetapp is already started and kill it to avoid conflicts
+'''
+
+
+def Checkanddowemeet():
+    if platform.system() == 'Windows':
+        os.system("taskkill /f /im wemeetapp.exe")
+    elif platform.system() == 'linux':
+        os.system("pkill wemeetapp*")
+
+
 while True:
     # dont forget to add 0 before A.M. time!
     now = datetime.now().strftime("%H:%M")
-    password_exsist = True
+    password_exsist = False
     debugging = True
     password = '666666'  # meeting room password goes here
     if now == "13:40" or debugging == True:  # here goes your time!
-        meeting_id = '12345678'  # Your meeting number goes here!
+        meeting_id = '6666666666'  # Your meeting number goes here!
         time.sleep(5)
         signIn(meeting_id)
         print('Joined.')
